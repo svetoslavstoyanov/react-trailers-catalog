@@ -5,11 +5,11 @@ import { compose } from 'recompose';
 import { withFirebase } from '../../Core/Firebase/index';
 import { FirebaseContext } from '../../Core/Firebase/index';
 import * as ROUTES from '../../Core/Routes';
-import Notifications, { notify } from 'react-notify-toast';
+import { notify } from 'react-notify-toast';
 
 let LoginPage = props => (
 	<FirebaseContext.Consumer>
-		{firebase => <Login {...props} firebase={firebase} />}
+		{firebase => <Login {...props} firebase={firebase} notify={notify} />}
 	</FirebaseContext.Consumer>
 );
 
@@ -32,13 +32,12 @@ class Login extends Component {
 		this.props.firebase
 			.loginUser(email, password)
 			.then(() => {
-				notify.show('Successful login!', 'success', 5000);
+				this.props.notify.show('Successful login!', 'success');
 				this.setState({ ...initialState });
 				this.props.history.push(ROUTES.HOME);
 			})
 			.catch(error => {
-				notify.show(`${error}`, 'error', 5000);
-				this.setState({ error });
+				this.props.notify.show(`${error}`, 'error');
 			});
 	};
 
@@ -51,8 +50,6 @@ class Login extends Component {
 		let isInvalid = email === '' || password === '';
 		return (
 			<Form className='col-6 mx-auto m-3' onSubmit={this.onSubmit}>
-				<Notifications options={{top: '60px'}}  />
-
 				<Card.Title className='text-center'>Login</Card.Title>
 
 				<Form.Group controlId='formBasicEmail'>

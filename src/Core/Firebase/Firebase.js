@@ -1,5 +1,6 @@
 import app from 'firebase/app';
 import 'firebase/auth';
+import { notify } from 'react-notify-toast';
 
 
 const config = {
@@ -24,7 +25,10 @@ class Firebase {
     loginUser = (email, password) =>
         this.auth.signInWithEmailAndPassword(email, password);
 
-    logoutUser = () => this.auth.signOut();
+    logoutUser = () => {
+        this.auth.signOut()
+        notify.show('Successful logout!', 'success');
+    };
 }
 
 export default Firebase;

@@ -5,11 +5,13 @@ import { withFirebase } from '../../Core/Firebase/index';
 import * as ROUTES from '../../Core/Routes';
 import { compose } from 'recompose';
 import { FirebaseContext } from '../../Core/Firebase/index';
-import Notifications, { notify } from 'react-notify-toast';
+import { notify } from 'react-notify-toast';
 
 const RegisterPage = props => (
 	<FirebaseContext.Consumer>
-		{firebase => <Register {...props} firebase={firebase} />}
+		{firebase => (
+			<Register {...props} firebase={firebase} notify={notify} />
+		)}
 	</FirebaseContext.Consumer>
 );
 let initialState = {
@@ -33,12 +35,12 @@ class Register extends Component {
 		this.props.firebase
 			.registerUser(email, password)
 			.then(() => {
-				notify.show('Successful registration!', 'success', 5000);
+				this.props.notify.show('Successful registration!', 'success');
 				this.setState({ ...initialState });
-				this.props.history.push(ROUTES.HOME);
+				this.props.history.push(ROUTES.LOGIN);
 			})
 			.catch(error => {
-				notify.show(`${error}`, 'error', 5000);
+				this.props.notify.show(`${error}`, 'error');
 			});
 	};
 
@@ -51,8 +53,6 @@ class Register extends Component {
 			username === '';
 		return (
 			<Form className='col-6 mx-auto  m-3' onSubmit={this.onSubmit}>
-				<Notifications options={{ top: '60px' }} />
-
 				<Card.Title className='text-center'>Register</Card.Title>
 
 				<Form.Group controlId='formBasicEmail'>
