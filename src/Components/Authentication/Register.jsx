@@ -6,6 +6,7 @@ import * as ROUTES from '../../Core/Routes';
 import { compose } from 'recompose';
 import { FirebaseContext } from '../../Core/Firebase/index';
 import { notify } from 'react-notify-toast';
+import * as ROLES from '../../Core/Roles';
 
 const RegisterPage = props => (
 	<FirebaseContext.Consumer>
@@ -18,7 +19,8 @@ let initialState = {
 	email: '',
 	username: '',
 	password: '',
-	confirmPassword: ''
+	confirmPassword: '',
+	isAdmin: false
 };
 
 class Register extends Component {
@@ -31,9 +33,22 @@ class Register extends Component {
 	};
 	onSubmit = e => {
 		e.preventDefault();
-		let { email, password } = this.state;
+		let { username, email, password, isAdmin } = this.state;
+		let roles = {};
+
+		if (isAdmin) {
+			roles[ROLES.ADMIN] = ROLES.ADMIN;
+		}
+
 		this.props.firebase
 			.registerUser(email, password)
+			.then(authUser => {
+				return this.props.firebase.user(authUser.user.uid).set({
+					username,
+					email,
+					roles
+				});
+			})
 			.then(() => {
 				this.props.notify.show('Successful registration!', 'success');
 				this.setState({ ...initialState });
@@ -43,9 +58,17 @@ class Register extends Component {
 				this.props.notify.show(`${error}`, 'error');
 			});
 	};
-
+	onChangeCheckbox = e => {
+		this.setState({ [e.target.name]: e.target.checked });
+	};
 	render() {
-		let { email, username, password, confirmPassword } = this.state;
+		let {
+			email,
+			username,
+			password,
+			confirmPassword,
+			isAdmin
+		} = this.state;
 		let isInvalid =
 			password !== confirmPassword ||
 			password === '' ||
@@ -95,6 +118,15 @@ class Register extends Component {
 						placeholder='Confirm password'
 						onChange={this.onChange}
 						value={confirmPassword}
+					/>
+				</Form.Group>
+				<Form.Group controlId='formBasicChecbox'>
+					<Form.Check
+						type='checkbox'
+						name='isAdmin'
+						checked={isAdmin}
+						onChange={this.onChangeCheckbox}
+						label='Admin'
 					/>
 				</Form.Group>
 				<Button
