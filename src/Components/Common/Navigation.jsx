@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import * as ROUTES from '../../Core/Routes';
 import * as ROLES from '../../Core/Roles';
 import LogoutLink from '../Authentication/Logout';
@@ -21,20 +21,35 @@ let Navigation = () => (
 let NavigationAuth = ({ authUser }) => (
 	<div>
 		<nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
-			<Link className='navbar-brand' to={ROUTES.TRAILERS}>
+			<NavLink
+				className='navbar-brand'
+				activeStyle={{ color: 'red' }}
+				to={ROUTES.TRAILERS}
+			>
 				Trailers
-			</Link>
-			<Link className='navbar-brand' to={ROUTES.PROFILE}>
-				Profile
-			</Link>
+			</NavLink>
 			{!!authUser.roles[ROLES.ADMIN] && (
-				<Link className='navbar-brand' to={ROUTES.ADMIN}>
-					Admin
-				</Link>
+				<NavLink
+					className='navbar-brand'
+					activeStyle={{ color: 'red' }}
+					to={ROUTES.ADMIN}
+				>
+					Admin page
+				</NavLink>
 			)}
-			<Link className='navbar-brand' to='/'>
-				<LogoutLink />
-			</Link>
+			<div className='ml-auto'>
+				<NavLink
+					className='navbar-brand'
+					activeStyle={{ color: 'red' }}
+					to={ROUTES.PROFILE}
+				>
+					{authUser.username}
+				</NavLink>
+
+				<NavLink className='navbar-brand' to='/'>
+					<LogoutLink />
+				</NavLink>
+			</div>
 		</nav>
 	</div>
 );
@@ -42,15 +57,29 @@ let NavigationAuth = ({ authUser }) => (
 let NavigationNoAuth = () => (
 	<div>
 		<nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
-			<Link className='navbar-brand' to={ROUTES.HOME}>
+			<NavLink
+				className='navbar-brand'
+				activeStyle={{ color: 'red' }}
+				to={ROUTES.HOME}
+			>
 				Home
-			</Link>
-			<Link className='navbar-brand' to={ROUTES.LOGIN}>
-				Login
-			</Link>
-			<Link className='navbar-brand' to={ROUTES.REGISTER}>
-				Register
-			</Link>
+			</NavLink>
+			<div className='ml-auto'>
+				<NavLink
+					className='navbar-brand'
+					activeStyle={{ color: 'red' }}
+					to={ROUTES.LOGIN}
+				>
+					Login
+				</NavLink>
+				<NavLink
+					className='navbar-brand'
+					activeStyle={{ color: 'red' }}
+					to={ROUTES.REGISTER}
+				>
+					Register
+				</NavLink>
+			</div>
 		</nav>
 	</div>
 );

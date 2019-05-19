@@ -45,16 +45,21 @@ class Login extends Component {
 		this.props.firebase
 			.loginUserWithGoogle()
 			.then(socialAuthUser => {
+				let username =
+					socialAuthUser.additionalUserInfo.profile.given_name;
+
+				this.props.notify.show(
+					`${username}, you have logged in!`,
+					'success'
+				);
+				this.setState({});
+				this.props.history.push(ROUTES.TRAILERS);
 				return this.props.firebase.user(socialAuthUser.user.uid).set({
 					username:
 						socialAuthUser.additionalUserInfo.profile.given_name,
 					email: socialAuthUser.user.email,
 					roles: {}
 				});
-			})
-			.then(socialAuthUser => {
-				this.setState({});
-				this.props.history.push(ROUTES.TRAILERS);
 			})
 			.catch(error => {
 				this.props.notify.show(`${error}`, 'error');
@@ -67,15 +72,21 @@ class Login extends Component {
 		this.props.firebase
 			.loginUserWithFaceBook()
 			.then(socialAuthUser => {
+				let username =
+					socialAuthUser.additionalUserInfo.profile.first_name;
+
+				this.props.notify.show(
+					`${username}, you have logged in!`,
+					'success'
+				);
+				this.props.history.push(ROUTES.TRAILERS);
+
 				return this.props.firebase.user(socialAuthUser.user.uid).set({
 					username:
 						socialAuthUser.additionalUserInfo.profile.first_name,
 					email: socialAuthUser.additionalUserInfo.profile.email,
 					roles: {}
 				});
-			})
-			.then(socialAuthUser => {
-				this.props.history.push(ROUTES.TRAILERS);
 			})
 			.catch(error => {
 				this.props.notify.show(`${error}`, 'error');
@@ -115,7 +126,7 @@ class Login extends Component {
 							placeholder='Password'
 						/>
 					</Form.Group>
-					
+
 					<Button
 						disabled={isInvalid}
 						variant='primary'
