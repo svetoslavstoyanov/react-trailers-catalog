@@ -66,6 +66,25 @@ class Firebase {
                 fallback()
             }
         })
+
+    trailers = () => this.db.ref('trailers/')
+    getOneTrailer = (id) => this.db.ref('trailers/' + id)
+    postTrailers = (data) => this.db.ref('trailers/').push(data)
+
+    getComments = (trailerId) => this.db.ref(`trailers/${trailerId}/comments/`)
+    postComment = (data, trailerId) => this.db.ref(`trailers/${trailerId}/comments`).push(data)
+    deleteComment = (trailerId, commentId) => this.db.ref(`trailers/${trailerId}/comments/${commentId}`).remove();
+
+
+    postLike = (data, trailerId) => this.db.ref(`trailers/${trailerId}/likes`).push(data)
+    getLikes = (trailerId) => this.db.ref(`trailers/${trailerId}/likes`)
+    deleteLike = (trailerId, likeId) => this.db.ref(`trailers/${trailerId}/likes/${likeId}`).remove();
+
+    getUserFavorites = (username) => this.db.ref(`favorites/${username}`);
+    postFavorite = (trailerId, username) => this.db.ref(`favorites/${username}/`).push(trailerId);
+    deleteFavorite = (username, favoriteId) => this.db.ref(`favorites/${username}/${favoriteId}`).remove();
+
+    getFavorites = (username) => this.db.ref(`favorites/${username}`)
 }
 
 export default Firebase;

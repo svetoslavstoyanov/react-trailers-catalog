@@ -76,7 +76,7 @@ class Register extends Component {
 			username === '';
 		return (
 			<Form className='col-6 mx-auto  m-3' onSubmit={this.onSubmit}>
-				<Card.Title className='text-center'>Register</Card.Title>
+				<Card.Title className='text-center heading-top'>Register</Card.Title>
 
 				<Form.Group controlId='formBasicEmail'>
 					<Form.Label>Email address</Form.Label>

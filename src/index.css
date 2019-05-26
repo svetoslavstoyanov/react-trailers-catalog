@@ -142,3 +142,57 @@ fieldset[disabled] .btn-google.focus {
   color: #dd4b39;
   background-color: #fff
 }
+
+.heading-top {
+  font-size: 28px;
+}
+
+.trailer-hover {
+  transition: all .2s ease-in-out;
+}
+
+.trailer-hover {
+  margin-bottom: 30px;
+  color: black;
+
+}
+
+
+
+@media only screen and (min-width: 768px) {
+  .trailer-hover:hover {
+    transform: scale(1.1);
+    opacity: .9;
+    text-decoration: none;
+    color: black;
+  }
+
+  .fa-caret-up,
+  .fa-caret-down {
+    margin-right: 70px;
+    cursor: pointer;
+  }
+}
+
+.btn-comment-delete,
+.btn-favorite {
+  background-color: Transparent;
+  border: Transparent
+}
+
+.img-trailer {
+  width: 290px;
+  height: 429px;
+}
+
+@media only screen and (max-width: 400px) {
+  .img-trailer {
+    width: 100%;
+    height: 385px;
+  }
+}
+
+.title-trailer {
+  width: 200px;
+  height: 20px;
+}

@@ -34,7 +34,7 @@ let NavigationAuth = ({ authUser }) => (
 					activeStyle={{ color: 'red' }}
 					to={ROUTES.ADMIN}
 				>
-					Admin page
+					Upload
 				</NavLink>
 			)}
 			<div className='ml-auto'>

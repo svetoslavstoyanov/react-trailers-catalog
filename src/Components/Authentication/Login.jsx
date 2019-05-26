@@ -103,7 +103,9 @@ class Login extends Component {
 		return (
 			<div className='col-6 mx-auto m-3'>
 				<Form onSubmit={this.onSubmit}>
-					<Card.Title className='text-center'>Login</Card.Title>
+					<Card.Title className='text-center heading-top'>
+						Login
+					</Card.Title>
 
 					<Form.Group controlId='formBasicEmail'>
 						<Form.Label>Email address</Form.Label>
