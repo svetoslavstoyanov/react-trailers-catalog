@@ -115,7 +115,7 @@ class TrailerCommentsClass extends Component {
 						trailerId={this.props.trailerId}
 					/>
 					<Form onSubmit={this.onSubmitComment}>
-						<InputGroup className='mb-3 col-10'>
+						<InputGroup className='mb-3 col-12'>
 							<FormControl
 								name='comment'
 								type='text'

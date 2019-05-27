@@ -101,7 +101,7 @@ class Login extends Component {
 		let { email, password } = this.state;
 		let isInvalid = email === '' || password === '';
 		return (
-			<div className='col-6 mx-auto m-3'>
+			<div className='col-12 col-lg-6 mx-auto m-3'>
 				<Form onSubmit={this.onSubmit}>
 					<Card.Title className='text-center heading-top'>
 						Login

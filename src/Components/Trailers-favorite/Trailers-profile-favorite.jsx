@@ -67,7 +67,7 @@ class TrailersFavoritePage extends Component {
 	render() {
 		let { trailers } = this.state;
 		return (
-			<div className='col-10 mx-auto m-3'>
+			<div className='col-12 mx-auto m-3'>
 				<Card.Title className='text-center heading-top'>
 					Favorites
 					{this.isAscending ? (

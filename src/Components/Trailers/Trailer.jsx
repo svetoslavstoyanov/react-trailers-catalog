@@ -35,7 +35,7 @@ class TrailerClass extends Component {
 	render() {
 		return (
 			<NavLink
-				className='trailer-hover'
+				className='trailer-hover mx-auto'
 				to=''
 				onClick={this.redirectToTrailer}
 			>

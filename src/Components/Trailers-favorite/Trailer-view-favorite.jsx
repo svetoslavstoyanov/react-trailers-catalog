@@ -75,13 +75,13 @@ class TrailersFavoriteViewPage extends Component {
 		return (
 			<div>
 				{trailer ? (
-					<div className='col-lg-8 mx-auto m-3'>
+					<div className='col-12 mx-auto m-3'>
 						<Card>
-							<div className='d-flex'>
-								<Card.Title className='mx-auto'>
+							<div className='d-flex justify-content-center mt-2'>
+								<Card.Title>
 									{this.state.trailer.title}
 								</Card.Title>
-								<div className='float-right mr-3 mt-1'>
+								<div>
 									<OverlayTrigger
 										key='left'
 										placement='left'

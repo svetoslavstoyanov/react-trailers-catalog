@@ -73,7 +73,7 @@ class FavoriteClass extends Component {
 		return (
 			<div>
 				{this.state.isFavorite !== true ? (
-					<div className='float-right mr-3 mt-1'>
+					<div>
 						<OverlayTrigger
 							key='left'
 							placement='left'
@@ -87,7 +87,7 @@ class FavoriteClass extends Component {
 						</OverlayTrigger>
 					</div>
 				) : (
-					<div className='float-right mr-3 mt-1'>
+					<div>
 						<OverlayTrigger
 							key='left'
 							placement='left'

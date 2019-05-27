@@ -66,7 +66,7 @@ class AdminBase extends Component {
 			releaseDate === '';
 
 		return (
-			<Form className='col-6 mx-auto  m-3' onSubmit={this.onSubmit}>
+			<Form className='col-sm-12 col-lg-6 mx-auto  m-3 admin-page' onSubmit={this.onSubmit}>
 				<Card.Title className='text-center'>Upload Trailer</Card.Title>
 
 				<Form.Group controlId='formBasicEmail'>

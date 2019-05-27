@@ -45,10 +45,10 @@ class TrailerViewPage extends Component {
 		return (
 			<div>
 				{trailer ? (
-					<div className='col-lg-8 mx-auto m-3'>
+					<div className='col-12 mx-auto m-3'>
 						<Card>
-							<div className='d-flex'>
-								<Card.Title className='mx-auto'>
+							<div className='d-flex justify-content-center mt-2'>
+								<Card.Title>
 									{this.state.trailer.title}
 								</Card.Title>
 								<TrailerFavorite

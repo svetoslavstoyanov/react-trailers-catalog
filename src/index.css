@@ -13,6 +13,10 @@ code {
     monospace;
 }
 
+.inline {
+  margin-left: -13px;
+}
+
 .btn-facebook {
   color: #fff;
   background-color: #3b5998;
@@ -149,6 +153,7 @@ fieldset[disabled] .btn-google.focus {
 
 .trailer-hover {
   transition: all .2s ease-in-out;
+
 }
 
 .trailer-hover {
@@ -166,6 +171,12 @@ fieldset[disabled] .btn-google.focus {
     text-decoration: none;
     color: black;
   }
+}
+
+@media only screen and (min-width: 550px) {
+  .trailer-hover {
+    width: 387px;
+  }
 
   .fa-caret-up,
   .fa-caret-down {
@@ -181,7 +192,7 @@ fieldset[disabled] .btn-google.focus {
 }
 
 .img-trailer {
-  width: 290px;
+  width: 100%;
   height: 429px;
 }
 
@@ -196,3 +207,13 @@ fieldset[disabled] .btn-google.focus {
   width: 200px;
   height: 20px;
 }
+
+.btn-like {
+  width: 60px;
+}
+/* 
+@media (min-width:1200px) {
+  .admin-page {
+    
+  }
+} */

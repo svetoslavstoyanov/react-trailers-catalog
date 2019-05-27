@@ -72,7 +72,7 @@ class LikeClass extends Component {
 			<div>
 				{!this.state.isLiked ? (
 					<Form onSubmit={this.onSubmitLike}>
-						<Button variant='primary' type='submit'>
+						<Button className='btn-like' variant='primary' type='submit'>
 							<i className='far fa-thumbs-up' />
 							<Badge className='badge'>
 								{this.state.likesCnt}
@@ -81,7 +81,7 @@ class LikeClass extends Component {
 					</Form>
 				) : (
 					<Form onSubmit={this.onDeleteLike}>
-						<Button variant='primary' type='submit'>
+						<Button className='btn-like' variant='primary' type='submit'>
 							<i className='fas fa-thumbs-up' />
 							<Badge className='badge'>
 								{this.state.likesCnt}

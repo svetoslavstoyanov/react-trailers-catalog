@@ -50,7 +50,7 @@ class TrailersPage extends Component {
 		let { trailers } = this.state;
 
 		return (
-			<div className='col-12 mx-auto'>
+			<div className='col-12 mx-auto m-3'>
 				<Card.Title className='text-center heading-top'>
 					Trailers
 					{this.isAscending ? (
